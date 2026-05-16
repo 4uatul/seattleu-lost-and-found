@@ -41,7 +41,7 @@ jobs:
       # Step 4: Build the React app (creates the dist/ folder)
       # The .env.production file in your repo sets VITE_API_URL=
       - name: Build
-        run: cd frontend && npm run build
+        run: cd frontend && npx vite build
 
       # Step 5: Give the runner AWS credentials so it can upload to S3
       # The secrets come from GitHub Settings → Secrets (you added these in Step 1)
