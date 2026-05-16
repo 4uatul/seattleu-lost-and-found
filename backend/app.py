@@ -99,6 +99,8 @@ class Item(db.Model):
             'reporter_name': self.reporter.full_name if self.reporter else None,
             'reporter_email': self.reporter.email if self.reporter else None,
             'claimer_id': self.claimer_id,
+            'claimer_name': self.claimer.full_name if self.claimer else None,
+            'claimer_email': self.claimer.email if self.claimer else None,
             'created_at': self.created_at.isoformat() if self.created_at else None,
             'updated_at': self.updated_at.isoformat() if self.updated_at else None,
         }
@@ -132,6 +134,7 @@ def verify_token(token):
         algorithms=['RS256'],
         audience=COGNITO_APP_CLIENT_ID,
         issuer=COGNITO_ISSUER,
+        options={"verify_at_hash": False},
     )
     return payload
 
